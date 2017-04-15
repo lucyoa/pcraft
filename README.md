@@ -1,7 +1,7 @@
-# BDCraft
+# PCraft
 
 ## Description
-App for building backdoor binaries using various communication techniques.
+Simple framework for building payloads
 
 ## Supported techniques:
 * reverse shell
