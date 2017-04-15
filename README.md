@@ -4,6 +4,7 @@
 Simple framework for building payloads.
 
 ## Supported techniques:
+* bind tcp
 * reverse tcp
 
 ## Supported architectures:
