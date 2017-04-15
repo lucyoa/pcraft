@@ -1,5 +1,6 @@
 from core.armle import Armle
 
+
 class armle_reverse_tcp(Armle):
     def __init__(self, reverse_ip, reverse_port):
         self.payload = (

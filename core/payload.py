@@ -2,6 +2,7 @@
 
 from struct import pack
 
+
 class Payload(object):
     header = None
 

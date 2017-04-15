@@ -1,5 +1,6 @@
 from payload import Payload
 
+
 class Mipsbe(Payload):
     bigendian = True
     header = (

@@ -1,12 +1,12 @@
-# BDCraft aka Backdoor Craft
+# BDCraft
 
 ## Description
-Script for building backdoor binaries using various communication techniques.
+App for building backdoor binaries using various communication techniques.
 
 ## Supported techniques:
 * reverse shell
 
 ## Supported architectures:
-* ARM
-* MIPS
-* MIPSEL
+* armle - arm little endian
+* mipsbe - mips big endian
+* mipsle - mips little endian

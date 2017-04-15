@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 import argparse
-from struct import pack
 
 from payloads.armle_reverse_tcp import armle_reverse_tcp
 from payloads.mipsbe_reverse_tcp import mipsbe_reverse_tcp
 from payloads.mipsle_reverse_tcp import mipsle_reverse_tcp
+
 
 def main():
     parser = argparse.ArgumentParser(description='Process some integers.')

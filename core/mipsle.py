@@ -1,5 +1,6 @@
 from payload import Payload
 
+
 class Mipsle(Payload):
     bigendian = False
     header = (
