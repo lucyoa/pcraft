@@ -1,10 +1,10 @@
 # PCraft
 
 ## Description
-Simple framework for building payloads
+Simple framework for building payloads.
 
 ## Supported techniques:
-* reverse shell
+* reverse tcp
 
 ## Supported architectures:
 * armle - arm little endian
