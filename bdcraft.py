@@ -22,7 +22,7 @@ def main():
     elif args.arch == 'mipsbe':
         content = mipsbe_reverse_tcp(args.ip, args.port).generate_elf()
     else:
-        print("Sorry, architecture is not supported")
+        print("Supported architectures: armle, mipsle, mispbe")
         return
 
     print(("Architecture: {}\n"
