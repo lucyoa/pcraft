@@ -14,8 +14,8 @@ def main():
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('--arch', help='Architecture: mips, mipsel, arm', required=True)
     parser.add_argument('--tech', help='Technique: bind, reverse', required=True)
-    parser.add_argument('--ip', help='IP address for reverse shell', required=False)
-    parser.add_argument('--port', help='Port number for reverse shell', required=False)
+    parser.add_argument('--ip', help='IP address for reverse shell (if technique is reverse)', required=False)
+    parser.add_argument('--port', help='Port number for bind/reverse shell', required=False)
 
     args = parser.parse_args()
 
