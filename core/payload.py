@@ -28,3 +28,13 @@ class Payload(object):
 
         content = elf[:0x44] + p_filesz + p_memsz + elf[0x4c:]
         return content
+
+    def generate_python(self):
+        res = "payload = (\n    \""
+        for idx, x in enumerate(self.payload):
+            if idx % 15 == 0 and idx != 0:
+                res += "\"\n    \""
+
+            res += "\\x%02x" % ord(x)
+        res += "\"\n)"
+        return res
